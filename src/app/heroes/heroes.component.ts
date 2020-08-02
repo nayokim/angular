@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import { MessageService } from '../message.service';
+
 
 @Component({
   selector: 'app-heroes',
@@ -14,7 +16,7 @@ export class HeroesComponent implements OnInit {
   selectedHero: Hero;
 
   // only allowed  one constructor in ts
-  constructor(private heroService: HeroService) {}
+  constructor(private heroService: HeroService, private messageService: MessageService) { }
 
   ngOnInit() {
     // call getHeroes() inside the ngOnInit lifecycle hook and
@@ -23,6 +25,8 @@ export class HeroesComponent implements OnInit {
   }
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
+
   }
 
   // Create a method to retrieve the heroes from the service.
