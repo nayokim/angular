@@ -13,21 +13,20 @@ import { MessageService } from '../message.service';
 export class HeroesComponent implements OnInit {
 
   heroes: Hero[];
-  selectedHero: Hero;
 
   // only allowed  one constructor in ts
-  constructor(private heroService: HeroService, private messageService: MessageService) { }
+  constructor(private heroService: HeroService) { }
 
   ngOnInit() {
     // call getHeroes() inside the ngOnInit lifecycle hook and
     // let Angular call ngOnInit() at an appropriate time after constructing a HeroesComponent instance.
       this.getHeroes();
   }
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
-
-  }
+  // onSelect(hero: Hero): void {
+  //   this.selectedHero = hero;
+  //   this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
+  //
+  // }
 
   // Create a method to retrieve the heroes from the service.
   // The new version waits for the Observable to emit the array of heroes—which could happen now or several minutes from now
